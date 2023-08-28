@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import fallbackImage from "./breakingnews.jpeg";
 
 export default class NewsItem extends Component {
   render() {
@@ -20,11 +21,11 @@ export default class NewsItem extends Component {
 
           <img
             className="card-img-top"
-            src={
-              !imageUrl
-                ? "https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/11787/production/_124395517_bbcbreakingnewsgraphic.jpg"
-                : imageUrl
-            }
+            src={imageUrl || fallbackImage} // Use original imageUrl if available, otherwise fallbackImage
+            onError={(e) => {
+              e.target.src = fallbackImage; // Set fallbackImage if original image fails to load
+            }}
+
             alt="..."
             
           />
