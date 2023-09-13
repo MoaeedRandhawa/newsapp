@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import fallbackImage from "./breakingnews.jpeg";
 
-export default class NewsItem extends Component {
-  render() {
+const NewsItem = (props) => {
     let { title, description, imageUrl, newsUrl, author, date, source } =
-      this.props;
+      props;
     return (
       <div className="my-3">
         <div className="card">
@@ -21,9 +20,9 @@ export default class NewsItem extends Component {
 
           <img
             className="card-img-top"
-            src={imageUrl || fallbackImage} // Use original imageUrl if available, otherwise fallbackImage
+            src={imageUrl || fallbackImage} 
             onError={(e) => {
-              e.target.src = fallbackImage; // Set fallbackImage if original image fails to load
+              e.target.src = fallbackImage; 
             }}
 
             alt="..."
@@ -50,5 +49,6 @@ export default class NewsItem extends Component {
         </div>
       </div>
     );
-  }
+  
 }
+export default NewsItem
